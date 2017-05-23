@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface ViewController : UIViewController
-
+#import <FBSDKLoginKit/FBSDKLoginKit.h>
+@interface ViewController : UIViewController<UIScrollViewDelegate>{
+}
+@property (weak, nonatomic) IBOutlet UIScrollView *scrView;
+@property (weak, nonatomic) IBOutlet UIPageControl *pageController;
 
 @end
 

@@ -56,7 +56,7 @@ typedef enum {
     MFSideMenuContainerViewController *controller = [MFSideMenuContainerViewController new];
     controller.leftMenuViewController = leftMenuViewController;
     controller.centerViewController = centerViewController;
-    controller.rightMenuViewController = rightMenuViewController;
+   // controller.rightMenuViewController = rightMenuViewController;
     return controller;
 }
 

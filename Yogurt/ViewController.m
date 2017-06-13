@@ -42,9 +42,7 @@
     if ([FBSDKAccessToken currentAccessToken]) {
         // User is logged in, do work such as go to next view controller.
         NSLog(@"User is logged in");
-        
-          [self navigateToClaimScreen];
-        //[self getFacebookProfileInfo];
+        [self getFacebookProfileInfo];
         
         
         
@@ -54,8 +52,27 @@
     
 
     FBSDKLoginButton *loginButton = [[FBSDKLoginButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width/2 -100, self.view.frame.size.height - 80, 200, 40)];
+    loginButton.delegate = self;
     loginButton.readPermissions =@[@"public_profile", @"email", @"user_friends"];
     [self.view addSubview:loginButton];
+}
+- (void)  loginButton:(FBSDKLoginButton *)loginButton
+didCompleteWithResult:(FBSDKLoginManagerLoginResult *)result
+                error:(NSError *)error{
+    
+    if ([FBSDKAccessToken currentAccessToken]) {
+        // User is logged in, do work such as go to next view controller.
+        NSLog(@"User is logged in");
+        [self getFacebookProfileInfo];
+        
+        
+        
+    }else{
+        NSLog(@"User is log out");
+    }
+}
+- (void)loginButtonDidLogOut:(FBSDKLoginButton *)loginButton{
+    
 }
 -(void)addShareBtn{
     FBSDKShareLinkContent *content = [[FBSDKShareLinkContent alloc] init];

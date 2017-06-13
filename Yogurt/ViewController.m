@@ -138,6 +138,8 @@ didCompleteWithResult:(FBSDKLoginManagerLoginResult *)result
              NSLog(@"pictureURL : %@",pictureURL);
              NSLog(@"User id : %@",[result objectForKey:@"id"]);
              
+             [self navigateToClaimScreen];
+             
 //             NSString *pictureURLLarge =  [NSString stringWithFormat:@"https://graph.facebook.com/\%@/picture?type=large",[result objectForKey:@"id"]] ;
              
 //             [_profileImageView setImageWithURL:[NSURL URLWithString:pictureURLLarge] placeholderImage:[UIImage imageNamed:@"placeHolder"]];

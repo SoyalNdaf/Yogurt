@@ -30,6 +30,7 @@
     
     
     
+     [self navigateToClaimScreen];
     
      [self addScrollView];
      [self addFacebookLoginBtn];
@@ -64,9 +65,7 @@ didCompleteWithResult:(FBSDKLoginManagerLoginResult *)result
         // User is logged in, do work such as go to next view controller.
         NSLog(@"User is logged in");
         [self getFacebookProfileInfo];
-        
-        
-        
+  
     }else{
         NSLog(@"User is log out");
     }

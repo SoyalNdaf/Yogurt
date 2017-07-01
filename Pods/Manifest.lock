@@ -1,32 +1,38 @@
 PODS:
-  - AFNetworking (3.1.0):
-    - AFNetworking/NSURLSession (= 3.1.0)
-    - AFNetworking/Reachability (= 3.1.0)
-    - AFNetworking/Security (= 3.1.0)
-    - AFNetworking/Serialization (= 3.1.0)
-    - AFNetworking/UIKit (= 3.1.0)
-  - AFNetworking/NSURLSession (3.1.0):
+  - AFNetworking (2.6.3):
+    - AFNetworking/NSURLConnection (= 2.6.3)
+    - AFNetworking/NSURLSession (= 2.6.3)
+    - AFNetworking/Reachability (= 2.6.3)
+    - AFNetworking/Security (= 2.6.3)
+    - AFNetworking/Serialization (= 2.6.3)
+    - AFNetworking/UIKit (= 2.6.3)
+  - AFNetworking/NSURLConnection (2.6.3):
     - AFNetworking/Reachability
     - AFNetworking/Security
     - AFNetworking/Serialization
-  - AFNetworking/Reachability (3.1.0)
-  - AFNetworking/Security (3.1.0)
-  - AFNetworking/Serialization (3.1.0)
-  - AFNetworking/UIKit (3.1.0):
+  - AFNetworking/NSURLSession (2.6.3):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (2.6.3)
+  - AFNetworking/Security (2.6.3)
+  - AFNetworking/Serialization (2.6.3)
+  - AFNetworking/UIKit (2.6.3):
+    - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
   - CZPicker (0.4.3)
-  - IQKeyboardManager (4.0.9)
+  - IQKeyboardManager (4.0.10)
 
 DEPENDENCIES:
-  - AFNetworking (~> 3.1)
+  - AFNetworking (~> 2.0)
   - CZPicker
   - IQKeyboardManager
 
 SPEC CHECKSUMS:
-  AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
+  AFNetworking: cb8d14a848e831097108418f5d49217339d4eb60
   CZPicker: 55aa1751ea26e209814552da1a9a08cba8bbf72a
-  IQKeyboardManager: 322c7405df3eb5f7e50dede32ea937bf3d4364e0
+  IQKeyboardManager: 593ee99b88381f4b9ccb22bd680f22606351bd41
 
-PODFILE CHECKSUM: 385bfb86d6c964d8ec09d4ee67c7b9fa4aea57cd
+PODFILE CHECKSUM: 8a74c4b605713e9b1d7bfce4e533f05a2d50c612
 
 COCOAPODS: 1.2.1

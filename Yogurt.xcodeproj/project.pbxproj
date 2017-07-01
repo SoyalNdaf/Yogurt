@@ -11,6 +11,7 @@
 		150588531ED203470066EADF /* LeftMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 150588511ED203470066EADF /* LeftMenuCell.m */; };
 		150588551ED207680066EADF /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 150588541ED207680066EADF /* MapKit.framework */; };
 		151E45241ECF122200D3F2DA /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 151E45231ECF122200D3F2DA /* Social.framework */; };
+		158B9A0B1F083511007F4A86 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 158B9A0A1F083511007F4A86 /* LoginViewController.m */; };
 		15C900CA1ECDBD4900CD9282 /* AccountKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15C9FF9B1ECDBD4800CD9282 /* AccountKit.framework */; };
 		15C900CB1ECDBD4900CD9282 /* AccountKitStrings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 15C9FF9C1ECDBD4800CD9282 /* AccountKitStrings.bundle */; };
 		15C900CC1ECDBD4900CD9282 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15C9FF9D1ECDBD4800CD9282 /* Bolts.framework */; };
@@ -75,6 +76,8 @@
 		150588511ED203470066EADF /* LeftMenuCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftMenuCell.m; sourceTree = "<group>"; };
 		150588541ED207680066EADF /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		151E45231ECF122200D3F2DA /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		158B9A091F083511007F4A86 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		158B9A0A1F083511007F4A86 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		15C9FF5D1ECDB6FD00CD9282 /* Yogurt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Yogurt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		15C9FF611ECDB6FD00CD9282 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		15C9FF631ECDB6FD00CD9282 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -208,6 +211,8 @@
 				15C9FF641ECDB6FD00CD9282 /* AppDelegate.m */,
 				15C9FF661ECDB6FD00CD9282 /* ViewController.h */,
 				15C9FF671ECDB6FD00CD9282 /* ViewController.m */,
+				158B9A091F083511007F4A86 /* LoginViewController.h */,
+				158B9A0A1F083511007F4A86 /* LoginViewController.m */,
 				15F9FB7A1ED06053000F6255 /* Home.h */,
 				15F9FB7B1ED06053000F6255 /* Home.m */,
 				15F9FB901ED070C9000F6255 /* SideMenuViewController.h */,
@@ -532,6 +537,7 @@
 				15CF9D581ED17F450018687A /* PersonalInfoViewController.m in Sources */,
 				15F9FB861ED06C9B000F6255 /* MFSideMenuShadow.m in Sources */,
 				15C9FF681ECDB6FD00CD9282 /* ViewController.m in Sources */,
+				158B9A0B1F083511007F4A86 /* LoginViewController.m in Sources */,
 				15CF9D521ED1779D0018687A /* ClaimViewController.m in Sources */,
 				150588521ED203470066EADF /* LeftSideVC.m in Sources */,
 				150588531ED203470066EADF /* LeftMenuCell.m in Sources */,

@@ -10,9 +10,11 @@
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 #import <FBSDKShareKit/FBSDKShareKit.h>
-#import "UIImageView+AFNetworking.h"
+#import "AFNetworking.h"
+#import "AFHTTPSessionManager.h"
 #import "Home.h"
 #import "ClaimViewController.h"
+#import "LoginViewController.h"
 @interface ViewController ()
 
 @end
@@ -28,14 +30,17 @@
     
     [[self navigationController] setNavigationBarHidden:YES animated:NO];
     
-    
-    
-     [self navigateToClaimScreen];
+
     
      [self addScrollView];
+    
+
+//    NSDictionary *parameters = @{@"email" : @"satish.test@gmail.com",@"password": @"satish@123"};
+//    
+//    [self postRequest:@"http://allahkaybanday.com/yogurt360/backend/API/signin/process" parameters:parameters];
+    
      [self addFacebookLoginBtn];
      //[self addShareBtn];
-    
 
 }
 
@@ -51,11 +56,28 @@
         NSLog(@"User is log out");
     }
     
-
+    
+    loginButtonForAPI = [UIButton buttonWithType: UIButtonTypeRoundedRect];
+    loginButtonForAPI.frame = CGRectMake(self.view.frame.size.width/2 -100,self.view.frame.size.height - 140, 200, 40);
+    [loginButtonForAPI setTitle:@"Show View" forState:UIControlStateNormal];
+    [loginButtonForAPI addTarget:self action:@selector(redirectToLoginView:) forControlEvents:UIControlEventTouchUpInside];
+    loginButtonForAPI.backgroundColor = [UIColor redColor];
+    [self.view addSubview:loginButtonForAPI];
+    
+    
+    
+    [self.view bringSubviewToFront:loginButtonForAPI];
+    
     FBSDKLoginButton *loginButton = [[FBSDKLoginButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width/2 -100, self.view.frame.size.height - 80, 200, 40)];
     loginButton.delegate = self;
     loginButton.readPermissions =@[@"public_profile", @"email", @"user_friends"];
     [self.view addSubview:loginButton];
+}
+-(void)redirectToLoginView:(UIButton*)sender
+{
+    LoginViewController *loginVC = [self.storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
+    
+    [self.navigationController pushViewController:loginVC animated:NO];
 }
 - (void)  loginButton:(FBSDKLoginButton *)loginButton
 didCompleteWithResult:(FBSDKLoginManagerLoginResult *)result
@@ -71,6 +93,10 @@ didCompleteWithResult:(FBSDKLoginManagerLoginResult *)result
     }
 }
 - (void)loginButtonDidLogOut:(FBSDKLoginButton *)loginButton{
+    
+    ClaimViewController *claimVC = [self.storyboard instantiateViewControllerWithIdentifier:@"ClaimViewController"];
+    
+    [self.navigationController pushViewController:claimVC animated:NO];
     
 }
 -(void)addShareBtn{
@@ -137,7 +163,7 @@ didCompleteWithResult:(FBSDKLoginManagerLoginResult *)result
              NSLog(@"pictureURL : %@",pictureURL);
              NSLog(@"User id : %@",[result objectForKey:@"id"]);
              
-             [self navigateToClaimScreen];
+            // [self navigateToClaimScreen];
              
 //             NSString *pictureURLLarge =  [NSString stringWithFormat:@"https://graph.facebook.com/\%@/picture?type=large",[result objectForKey:@"id"]] ;
              
@@ -156,6 +182,23 @@ didCompleteWithResult:(FBSDKLoginManagerLoginResult *)result
 
     [self.navigationController pushViewController:claimVC animated:NO];
 }
+
+-(void)postRequest:(NSString *)urlStr parameters:(NSDictionary *)parametersDictionary{
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    [manager POST:urlStr
+       parameters:parametersDictionary
+          success:^(AFHTTPRequestOperation *operation, id responseObject) {
+              NSLog(@"JSON: %@", responseObject);
+          } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+              NSLog(@"Error: %@", error);
+          }];
+
+    
+    
+    
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

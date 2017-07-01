@@ -40,13 +40,13 @@
     [JTProgressHUD show];
     
     
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    [manager GET:@"http://example.com/resources.json" parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
-        NSLog(@"JSON: %@", responseObject);
-    } failure:^(NSURLSessionTask *operation, NSError *error) {
-        NSLog(@"Error: %@", error);
-        [JTProgressHUD hide];
-    }];
+//    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+//    [manager GET:@"http://example.com/resources.json" parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+//        NSLog(@"JSON: %@", responseObject);
+//    } failure:^(NSURLSessionTask *operation, NSError *error) {
+//        NSLog(@"Error: %@", error);
+//        [JTProgressHUD hide];
+//    }];
     
     [JTProgressHUD hide];
     

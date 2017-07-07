@@ -8,6 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LoginViewController : UIViewController
+@interface LoginViewController : UIViewController{
+    NSString *emailID;
+}
+@property (weak, nonatomic) IBOutlet UITextField *emailTF;
+@property (weak, nonatomic) IBOutlet UITextField *passwordTF;
+@property (weak, nonatomic) IBOutlet UIButton *signInBtn;
+- (IBAction)signInBtnPressed:(id)sender;
+@property (weak, nonatomic) IBOutlet UIButton *forgotPasswordBtn;
+- (IBAction)forgotPasswordBtnPressed:(id)sender;
 
 @end

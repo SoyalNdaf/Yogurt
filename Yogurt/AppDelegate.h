@@ -10,6 +10,8 @@
 #import <CoreData/CoreData.h>
 #import "AFNetworking/AFNetworking.h"
 #import "JTProgressHUD.h"
+#import "AFNetworking.h"
+#import "AFHTTPSessionManager.h"
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;

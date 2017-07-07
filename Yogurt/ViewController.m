@@ -30,17 +30,13 @@
     
     [[self navigationController] setNavigationBarHidden:YES animated:NO];
     
-
     
      [self addScrollView];
     
 
-//    NSDictionary *parameters = @{@"email" : @"satish.test@gmail.com",@"password": @"satish@123"};
-//    
-//    [self postRequest:@"http://allahkaybanday.com/yogurt360/backend/API/signin/process" parameters:parameters];
     
      [self addFacebookLoginBtn];
-     //[self addShareBtn];
+     [self addShareBtn];
 
 }
 
@@ -181,22 +177,6 @@ didCompleteWithResult:(FBSDKLoginManagerLoginResult *)result
     ClaimViewController *claimVC = [self.storyboard instantiateViewControllerWithIdentifier:@"ClaimViewController"];
 
     [self.navigationController pushViewController:claimVC animated:NO];
-}
-
--(void)postRequest:(NSString *)urlStr parameters:(NSDictionary *)parametersDictionary{
-    
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    [manager POST:urlStr
-       parameters:parametersDictionary
-          success:^(AFHTTPRequestOperation *operation, id responseObject) {
-              NSLog(@"JSON: %@", responseObject);
-          } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-              NSLog(@"Error: %@", error);
-          }];
-
-    
-    
-    
 }
 
 - (void)didReceiveMemoryWarning {

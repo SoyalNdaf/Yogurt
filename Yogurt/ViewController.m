@@ -15,6 +15,8 @@
 #import "Home.h"
 #import "ClaimViewController.h"
 #import "LoginViewController.h"
+
+#import <CoreLocation/CoreLocation.h>
 @interface ViewController ()
 
 @end
@@ -24,6 +26,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    locationManager = [[CLLocationManager alloc] init];
+    locationManager.delegate = self;
+    
+    [locationManager requestWhenInUseAuthorization];
+    locationManager.distanceFilter = kCLDistanceFilterNone; // whenever we move
+    locationManager.desiredAccuracy = kCLLocationAccuracyBest; // 100 m
+    [locationManager startUpdatingLocation];
+
     
    }
 -(void)viewWillAppear:(BOOL)animated{
@@ -52,13 +62,13 @@
         NSLog(@"User is log out");
     }
     
-    
-    loginButtonForAPI = [UIButton buttonWithType: UIButtonTypeRoundedRect];
-    loginButtonForAPI.frame = CGRectMake(self.view.frame.size.width/2 -100,self.view.frame.size.height - 140, 200, 40);
-    [loginButtonForAPI setTitle:@"Show View" forState:UIControlStateNormal];
-    [loginButtonForAPI addTarget:self action:@selector(redirectToLoginView:) forControlEvents:UIControlEventTouchUpInside];
-    loginButtonForAPI.backgroundColor = [UIColor redColor];
-    [self.view addSubview:loginButtonForAPI];
+//    
+//    loginButtonForAPI = [UIButton buttonWithType: UIButtonTypeRoundedRect];
+//    loginButtonForAPI.frame = CGRectMake(self.view.frame.size.width/2 -100,self.view.frame.size.height - 140, 200, 40);
+//    [loginButtonForAPI setTitle:@"Show View" forState:UIControlStateNormal];
+//    [loginButtonForAPI addTarget:self action:@selector(redirectToLoginView:) forControlEvents:UIControlEventTouchUpInside];
+//    loginButtonForAPI.backgroundColor = [UIColor redColor];
+//    [self.view addSubview:loginButtonForAPI];
     
     
     
@@ -148,6 +158,8 @@ didCompleteWithResult:(FBSDKLoginManagerLoginResult *)result
 -(void)getFacebookProfileInfo{
 
     
+
+    
     [[[FBSDKGraphRequest alloc] initWithGraphPath:@"me"
                                        parameters:@{@"fields": @"picture, email, name,id"}]
      startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
@@ -184,5 +196,23 @@ didCompleteWithResult:(FBSDKLoginManagerLoginResult *)result
     // Dispose of any resources that can be recreated.
 }
 
+
+
+- (NSString *)deviceLocation {
+    return [NSString stringWithFormat:@"latitude: %f longitude: %f", locationManager.location.coordinate.latitude, locationManager.location.coordinate.longitude];
+}
+
+-(void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation{
+    NSLog(@"didUpdateToLocation");}
+-(void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error{
+    NSLog(@"didFailWithError");
+    [manager stopUpdatingLocation];
+}
+
+- (void)locationManager:(CLLocationManager *)manager
+     didUpdateLocations:(NSArray *)locations
+{  NSLog(@"didUpdateToLocation2");
+    
+}
 
 @end

@@ -77,11 +77,18 @@
 //        "account_id": "11"
 //    }
     
+
     
     
     NSString *str = @"http://allahkaybanday.com/yogurt360/backend/API/userprofile/updateProfile";
     
-    NSDictionary *params = @{@"username" :@"sat",@"firstname" :self.firstNameTF.text,@"lastname" :self.lastNameTF.text,@"email" :[NSString stringWithFormat:@"%@",[[NSUserDefaults standardUserDefaults] valueForKey:@"EMAIL_ID"]],@"ppic" :@"",@"account_id" :[NSString stringWithFormat:@"%@",[[NSUserDefaults standardUserDefaults] valueForKey:@"USER_ID"]]};
+    NSDictionary *params = @{@"username" :@"sat",
+                             @"firstname" :self.firstNameTF.text,
+                             @"lastname" :self.lastNameTF.text,
+                             @"email" :[NSString stringWithFormat:@"%@",[[NSUserDefaults standardUserDefaults] valueForKey:@"EMAIL_ID"]],
+                             @"ppic" :@"",
+                             @"account_id" :[NSString stringWithFormat:@"%@",[[NSUserDefaults standardUserDefaults] valueForKey:@"USER_ID"]]
+                             };
     
     
     [manager POST:str parameters:params
@@ -138,14 +145,14 @@
                              @"user_id" :[NSString stringWithFormat:@"%@",[[NSUserDefaults standardUserDefaults]valueForKey:@"USER_ID"]],
                              @"orderusername":[[NSUserDefaults standardUserDefaults] valueForKey:@"USER_NAME"],
                              @"order_registered_address":self.addressTF.text,
-                             @"order_delivery_address1":@"",
+                             @"order_delivery_address1":self.addressTF.text,
                              @"order_delivery_address2":@"",
                              @"order_delivery_city":self.cityTF.text,
                              @"order_delivery_country":self.countryTF.text,
                              @"order_delivery_pincode":@"422003",
-                             @"order_purchase_date": @"01-07-2017",
-                             @"order_delivery_date": @"01-07-2017",
-                             @"order_amount": @"502",
+                             @"order_purchase_date": [self getDateString:[NSDate date]],
+                             @"order_delivery_date": [self getDateString:[NSDate date]],
+                             @"order_amount": @"360",
                              @"order_status": @"Dispatched",
                              @"order_payment_mode" : @"CASH"
                              };
@@ -175,6 +182,8 @@
              [alert addAction:noButton];
              
              [self presentViewController:alert animated:YES completion:nil];
+             
+             [self getLocationFromAddressString:[NSString stringWithFormat:@"%@ %@",self.addressTF,self.cityTF]];
 
              
          }else{
@@ -209,4 +218,42 @@
 }
 
 
+-(NSString *)getDateString:(NSDate *) myNSDateInstance
+{
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+  [formatter setDateFormat:@"dd-MM-yyyy"];
+    
+    //Optionally for time zone conversions
+//    [formatter setTimeZone:[NSTimeZone timeZoneWithName:@"..."]];
+    
+    NSString *stringFromDate = [formatter stringFromDate:myNSDateInstance];
+    return stringFromDate;
+    
+}
+
+
+
+
+-(CLLocationCoordinate2D) getLocationFromAddressString: (NSString*) addressStr {
+    double latitude = 0, longitude = 0;
+    NSString *esc_addr =  [addressStr stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSString *req = [NSString stringWithFormat:@"http://maps.google.com/maps/api/geocode/json?sensor=false&address=%@", esc_addr];
+    NSString *result = [NSString stringWithContentsOfURL:[NSURL URLWithString:req] encoding:NSUTF8StringEncoding error:NULL];
+    if (result) {
+        NSScanner *scanner = [NSScanner scannerWithString:result];
+        if ([scanner scanUpToString:@"\"lat\" :" intoString:nil] && [scanner scanString:@"\"lat\" :" intoString:nil]) {
+            [scanner scanDouble:&latitude];
+            if ([scanner scanUpToString:@"\"lng\" :" intoString:nil] && [scanner scanString:@"\"lng\" :" intoString:nil]) {
+                [scanner scanDouble:&longitude];
+            }
+        }
+    }
+    CLLocationCoordinate2D center;
+    center.latitude=latitude;
+    center.longitude = longitude;
+    NSLog(@"View Controller get Location Logitute : %f",center.latitude);
+    NSLog(@"View Controller get Location Latitute : %f",center.longitude);
+    return center;
+    
+}
 @end

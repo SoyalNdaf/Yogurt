@@ -49,6 +49,8 @@
 		15F9FB8D1ED06D5F000F6255 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15F9FB8C1ED06D5F000F6255 /* UIKit.framework */; };
 		15F9FB8F1ED06D85000F6255 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15F9FB8E1ED06D85000F6255 /* Foundation.framework */; };
 		15F9FB921ED070C9000F6255 /* SideMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15F9FB911ED070C9000F6255 /* SideMenuViewController.m */; };
+		16063F9B1F120B850034A896 /* questionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16063F9A1F120B850034A896 /* questionController.m */; };
+		16063F9D1F1211550034A896 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16063F9C1F1211550034A896 /* CoreLocation.framework */; };
 		D45CB32A0BA7CE9916527D55 /* Pods_Yogurt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5769342BBCF9D879111C311 /* Pods_Yogurt.framework */; };
 /* End PBXBuildFile section */
 
@@ -134,6 +136,9 @@
 		15F9FB8E1ED06D85000F6255 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		15F9FB901ED070C9000F6255 /* SideMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SideMenuViewController.h; sourceTree = "<group>"; };
 		15F9FB911ED070C9000F6255 /* SideMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SideMenuViewController.m; sourceTree = "<group>"; };
+		16063F991F120B850034A896 /* questionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = questionController.h; sourceTree = "<group>"; };
+		16063F9A1F120B850034A896 /* questionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = questionController.m; sourceTree = "<group>"; };
+		16063F9C1F1211550034A896 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		5CEB656AF0FEFEFD1074F888 /* Pods-Yogurt.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Yogurt.release.xcconfig"; path = "Pods/Target Support Files/Pods-Yogurt/Pods-Yogurt.release.xcconfig"; sourceTree = "<group>"; };
 		7259F9237C87AB23DB5835F7 /* Pods-Yogurt.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Yogurt.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Yogurt/Pods-Yogurt.debug.xcconfig"; sourceTree = "<group>"; };
 		A5769342BBCF9D879111C311 /* Pods_Yogurt.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Yogurt.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -144,6 +149,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				16063F9D1F1211550034A896 /* CoreLocation.framework in Frameworks */,
 				150588551ED207680066EADF /* MapKit.framework in Frameworks */,
 				15F9FB8F1ED06D85000F6255 /* Foundation.framework in Frameworks */,
 				15F9FB8D1ED06D5F000F6255 /* UIKit.framework in Frameworks */,
@@ -229,6 +235,8 @@
 				1505884F1ED203470066EADF /* LeftSideVC.m */,
 				150588501ED203470066EADF /* LeftMenuCell.h */,
 				150588511ED203470066EADF /* LeftMenuCell.m */,
+				16063F991F120B850034A896 /* questionController.h */,
+				16063F9A1F120B850034A896 /* questionController.m */,
 				15C9FF691ECDB6FD00CD9282 /* Main.storyboard */,
 				15C9FF6F1ECDB6FD00CD9282 /* Assets.xcassets */,
 				15C9FF711ECDB6FD00CD9282 /* LaunchScreen.storyboard */,
@@ -330,6 +338,7 @@
 		86C8EA3439FE620A3847BA7B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				16063F9C1F1211550034A896 /* CoreLocation.framework */,
 				150588541ED207680066EADF /* MapKit.framework */,
 				15F9FB8E1ED06D85000F6255 /* Foundation.framework */,
 				15F9FB8C1ED06D5F000F6255 /* UIKit.framework */,
@@ -547,6 +556,7 @@
 				15F9FB871ED06C9B000F6255 /* UIViewController+MFSideMenuAdditions.m in Sources */,
 				15C9FF651ECDB6FD00CD9282 /* AppDelegate.m in Sources */,
 				15C9FF621ECDB6FD00CD9282 /* main.m in Sources */,
+				16063F9B1F120B850034A896 /* questionController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

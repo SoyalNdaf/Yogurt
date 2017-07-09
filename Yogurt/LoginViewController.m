@@ -10,6 +10,7 @@
 #import "AFNetworking.h"
 #import "AFHTTPSessionManager.h"
 #import "ClaimViewController.h"
+#import "JTProgressHUD.h"
 @interface LoginViewController ()
 
 @end
@@ -29,6 +30,8 @@
 
 -(void)parseLoginApi{
     
+    [JTProgressHUD show];
+    
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
     
@@ -41,7 +44,7 @@
     [manager POST:str parameters:params
           success:^(AFHTTPRequestOperation *operation, id responseObject)
      {
-         
+          [JTProgressHUD hide];
          if ([[responseObject valueForKey:@"status"]boolValue])
          {
              // need to get from api
@@ -62,6 +65,8 @@
      }
           failure:
      ^(AFHTTPRequestOperation *operation, NSError *error) {
+         [JTProgressHUD hide];
+         
          NSLog(@"Error: %@", error);
      }];
     

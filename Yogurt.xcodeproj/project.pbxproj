@@ -11,6 +11,8 @@
 		150588531ED203470066EADF /* LeftMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 150588511ED203470066EADF /* LeftMenuCell.m */; };
 		150588551ED207680066EADF /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 150588541ED207680066EADF /* MapKit.framework */; };
 		151E45241ECF122200D3F2DA /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 151E45231ECF122200D3F2DA /* Social.framework */; };
+		1576AC561F139012001255FA /* OrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1576AC551F139012001255FA /* OrderViewController.m */; };
+		1576AC591F1391B9001255FA /* ConfirmPinViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1576AC581F1391B9001255FA /* ConfirmPinViewController.m */; };
 		158B9A0B1F083511007F4A86 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 158B9A0A1F083511007F4A86 /* LoginViewController.m */; };
 		15C900CA1ECDBD4900CD9282 /* AccountKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15C9FF9B1ECDBD4800CD9282 /* AccountKit.framework */; };
 		15C900CB1ECDBD4900CD9282 /* AccountKitStrings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 15C9FF9C1ECDBD4800CD9282 /* AccountKitStrings.bundle */; };
@@ -78,6 +80,10 @@
 		150588511ED203470066EADF /* LeftMenuCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftMenuCell.m; sourceTree = "<group>"; };
 		150588541ED207680066EADF /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		151E45231ECF122200D3F2DA /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		1576AC541F139012001255FA /* OrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderViewController.h; sourceTree = "<group>"; };
+		1576AC551F139012001255FA /* OrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderViewController.m; sourceTree = "<group>"; };
+		1576AC571F1391B9001255FA /* ConfirmPinViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfirmPinViewController.h; sourceTree = "<group>"; };
+		1576AC581F1391B9001255FA /* ConfirmPinViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfirmPinViewController.m; sourceTree = "<group>"; };
 		158B9A091F083511007F4A86 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		158B9A0A1F083511007F4A86 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		15C9FF5D1ECDB6FD00CD9282 /* Yogurt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Yogurt.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -237,6 +243,10 @@
 				150588511ED203470066EADF /* LeftMenuCell.m */,
 				16063F991F120B850034A896 /* questionController.h */,
 				16063F9A1F120B850034A896 /* questionController.m */,
+				1576AC541F139012001255FA /* OrderViewController.h */,
+				1576AC551F139012001255FA /* OrderViewController.m */,
+				1576AC571F1391B9001255FA /* ConfirmPinViewController.h */,
+				1576AC581F1391B9001255FA /* ConfirmPinViewController.m */,
 				15C9FF691ECDB6FD00CD9282 /* Main.storyboard */,
 				15C9FF6F1ECDB6FD00CD9282 /* Assets.xcassets */,
 				15C9FF711ECDB6FD00CD9282 /* LaunchScreen.storyboard */,
@@ -554,7 +564,9 @@
 				15C9FF6E1ECDB6FD00CD9282 /* Yogurt.xcdatamodeld in Sources */,
 				15CF9D4C1ED1719C0018687A /* OTPViewController.m in Sources */,
 				15F9FB871ED06C9B000F6255 /* UIViewController+MFSideMenuAdditions.m in Sources */,
+				1576AC561F139012001255FA /* OrderViewController.m in Sources */,
 				15C9FF651ECDB6FD00CD9282 /* AppDelegate.m in Sources */,
+				1576AC591F1391B9001255FA /* ConfirmPinViewController.m in Sources */,
 				15C9FF621ECDB6FD00CD9282 /* main.m in Sources */,
 				16063F9B1F120B850034A896 /* questionController.m in Sources */,
 			);

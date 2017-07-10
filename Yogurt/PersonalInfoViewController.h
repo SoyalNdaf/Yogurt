@@ -22,6 +22,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *countryTF;
 @property (weak, nonatomic) IBOutlet UITextField *phoneTF;
 @property (weak, nonatomic) IBOutlet UIButton *sendButton;
+@property (nonatomic, retain) NSString *selectedQuantity;
 - (IBAction)sendButtonPressed:(id)sender;
 
 - (IBAction)openMenu:(id)sender;

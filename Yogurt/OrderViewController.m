@@ -1,27 +1,25 @@
 //
-//  questionController.m
+//  OrderViewController.m
 //  Yogurt
 //
-//  Created by Ketan on 09/07/17.
+//  Created by Soyal on 10/07/17.
 //  Copyright © 2017 Soyal. All rights reserved.
 //
 
-#import "questionController.h"
+#import "OrderViewController.h"
 #import <CZPicker/CZPicker.h>
 #import "PersonalInfoViewController.h"
-#import "OrderViewController.h"
-@interface questionController ()
-@property NSArray *members;
+@interface OrderViewController ()
+@property NSArray *quntity;
+@property NSString *selectedQuantity;
 @end
 
-@implementation questionController
+@implementation OrderViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
-    self.members = @[@"1", @"2", @"3",@"4", @"5", @"6",@"7", @"8", @"9"];
-
+    self.quntity = @[@"1", @"2", @"3",@"4", @"5", @"6",@"7", @"8", @"9",@"10"];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -39,16 +37,18 @@
 }
 */
 
-- (IBAction)memberSelectionClicked:(id)sender {
-    
-    CZPickerView *picker = [[CZPickerView alloc] initWithHeaderTitle:@"members" cancelButtonTitle:@"Cancel" confirmButtonTitle:@"Confirm"];
+- (IBAction)selectProductButtonPressed:(id)sender {
+    [self alertForNoProductAvilable];
+}
+
+- (IBAction)selectQuantityButtonPressed:(id)sender {
+    CZPickerView *picker = [[CZPickerView alloc] initWithHeaderTitle:@"quntity" cancelButtonTitle:@"Cancel" confirmButtonTitle:@"Confirm"];
     picker.delegate = self;
     picker.dataSource = self;
     picker.needFooterView = YES;
     [picker show];
 
 }
-
 /* comment out this method to allow
  CZPickerView:titleForRow: to work.
  */
@@ -56,7 +56,7 @@
                attributedTitleForRow:(NSInteger)row{
     
     NSAttributedString *att = [[NSAttributedString alloc]
-                               initWithString:self.members[row]
+                               initWithString:self.quntity[row]
                                attributes:@{
                                             NSFontAttributeName:[UIFont fontWithName:@"Avenir-Light" size:18.0]
                                             }];
@@ -65,17 +65,21 @@
 
 - (NSString *)czpickerView:(CZPickerView *)pickerView
                titleForRow:(NSInteger)row{
-    return self.members[row];
+    return self.quntity[row];
 }
 
 
 - (NSInteger)numberOfRowsInPickerView:(CZPickerView *)pickerView {
-    return self.members.count;
+    return self.quntity.count;
 }
 
 - (void)czpickerView:(CZPickerView *)pickerView didConfirmWithItemAtRow:(NSInteger)row {
-    NSLog(@"%@ is chosen!", self.members[row]);
-    [self.memberButton setTitle:[NSString stringWithFormat:@"%@",self.members[row]] forState:UIControlStateNormal];
+    NSLog(@"%@ is chosen!", self.quntity[row]);
+    
+    
+    [self.quantityButton setTitle:[NSString stringWithFormat:@"%@ Unit",self.quntity[row]] forState:UIControlStateNormal];
+    
+    self.selectedQuantity = self.quntity[row];
     
     [self.navigationController setNavigationBarHidden:YES];
 }
@@ -83,10 +87,10 @@
 - (void)czpickerView:(CZPickerView *)pickerView didConfirmWithItemsAtRows:(NSArray *)rows {
     for (NSNumber *n in rows) {
         NSInteger row = [n integerValue];
-        NSLog(@"%@ is chosen!", self.members[row]);
+        NSLog(@"%@ is chosen!", self.quntity[row]);
     }
     
-  
+    
 }
 
 - (void)czpickerViewDidClickCancelButton:(CZPickerView *)pickerView {
@@ -109,21 +113,34 @@
 - (void)czpickerViewDidDismiss:(CZPickerView *)pickerView {
     NSLog(@"Picker did dismiss.");
 }
-- (IBAction)doneButtonPressed:(id)sender {
-    
-    NSLog(@"value for key = %@",[[NSUserDefaults standardUserDefaults] valueForKey:@"REFERRAL"]);
-    
-    if ([[NSUserDefaults standardUserDefaults] valueForKey:@"REFERRAL"] == nil || [[NSUserDefaults standardUserDefaults] boolForKey:@"REFERRAL"] == false) {
-        PersonalInfoViewController *personalVC = [self.storyboard instantiateViewControllerWithIdentifier:@"PersonalInfoViewController"];
-        
-        personalVC.selectedQuantity = @"1";
-        [self.navigationController pushViewController:personalVC animated:NO];
-    }else{
-        OrderViewController *orderVC = [self.storyboard instantiateViewControllerWithIdentifier:@"OrderViewController"];
-        
-        [self.navigationController pushViewController:orderVC animated:NO];
+- (IBAction)addMoreProductButtonPressed:(id)sender {
+    [self alertForNoProductAvilable];
+}
 
-    }
+- (IBAction)checkOutButtonPressed:(id)sender {
+    PersonalInfoViewController *personalVC = [self.storyboard instantiateViewControllerWithIdentifier:@"PersonalInfoViewController"];
+    
+    personalVC.selectedQuantity = self.selectedQuantity;
+    [self.navigationController pushViewController:personalVC animated:NO];
+}
 
+-(void)alertForNoProductAvilable{
+    UIAlertController * alert = [UIAlertController
+                                 alertControllerWithTitle:@"Only One Product Avilable Right Now"
+                                 message:@""
+                                 preferredStyle:UIAlertControllerStyleAlert];
+    
+    
+    
+    UIAlertAction* okButton = [UIAlertAction
+                               actionWithTitle:@"OK"
+                               style:UIAlertActionStyleDefault
+                               handler:^(UIAlertAction * action) {
+                                   //Handle no, thanks button
+                               }];
+    
+    [alert addAction:okButton];
+    
+    [self presentViewController:alert animated:YES completion:nil];
 }
 @end

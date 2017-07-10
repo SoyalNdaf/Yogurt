@@ -192,14 +192,14 @@
              
              
              
-             UIAlertAction* noButton = [UIAlertAction
+             UIAlertAction* okButton = [UIAlertAction
                                         actionWithTitle:@"OK"
                                         style:UIAlertActionStyleDefault
                                         handler:^(UIAlertAction * action) {
                                             //Handle no, thanks button
                                         }];
              
-             [alert addAction:noButton];
+             [alert addAction:okButton];
              
              [self presentViewController:alert animated:YES completion:nil];
              

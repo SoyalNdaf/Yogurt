@@ -10,8 +10,8 @@
 #import "MFSideMenu.h"
 #import "AFNetworking.h"
 #import "AFHTTPSessionManager.h"
+#import "ConfirmPinViewController.h"
 @interface PersonalInfoViewController ()
-
 @end
 
 @implementation PersonalInfoViewController
@@ -138,6 +138,8 @@
 //    }
     
     
+    int amount = [self.selectedQuantity intValue] * 360;
+    
     
     NSString *str = @"http://allahkaybanday.com/yogurt360/backend/API/userorders/create";
     
@@ -152,7 +154,7 @@
                              @"order_delivery_pincode":@"422003",
                              @"order_purchase_date": [self getDateString:[NSDate date]],
                              @"order_delivery_date": [self getDateString:[NSDate date]],
-                             @"order_amount": @"360",
+                             @"order_amount": [NSString stringWithFormat:@"%d",amount],
                              @"order_status": @"Dispatched",
                              @"order_payment_mode" : @"CASH"
                              };
@@ -165,6 +167,9 @@
          if ([[responseObject valueForKey:@"status"]boolValue])
          {
              
+             [[NSUserDefaults standardUserDefaults]setBool:true forKey:@"REFERRAL"];
+             [[NSUserDefaults standardUserDefaults]synchronize];
+             
              UIAlertController * alert = [UIAlertController
                                           alertControllerWithTitle:[responseObject valueForKey:@"message"]
                                           message:@""
@@ -172,14 +177,17 @@
              
              
              
-             UIAlertAction* noButton = [UIAlertAction
+             UIAlertAction* okButton = [UIAlertAction
                                         actionWithTitle:@"OK"
                                         style:UIAlertActionStyleDefault
                                         handler:^(UIAlertAction * action) {
-                                            //Handle no, thanks button
+                                            //Handle ok, thanks button
+                                            ConfirmPinViewController *pinVC = [self.storyboard instantiateViewControllerWithIdentifier:@"ConfirmPinViewController"];
+                                            
+                                            [self.navigationController pushViewController:pinVC animated:NO];
                                         }];
              
-             [alert addAction:noButton];
+             [alert addAction:okButton];
              
              [self presentViewController:alert animated:YES completion:nil];
              
@@ -195,14 +203,14 @@
              
              
              
-             UIAlertAction* noButton = [UIAlertAction
+             UIAlertAction* okButton = [UIAlertAction
                                         actionWithTitle:@"OK"
                                         style:UIAlertActionStyleDefault
                                         handler:^(UIAlertAction * action) {
-                                            //Handle no, thanks button
+                                            //Handle ok, thanks button
                                         }];
              
-             [alert addAction:noButton];
+             [alert addAction:okButton];
              
              [self presentViewController:alert animated:YES completion:nil];
 
